@@ -1,0 +1,90 @@
+﻿JS8Call -> HRD Logbook (JS8toHRD)
+© 2026 F4MAJ / Jean-Bernard — licence MIT — https://github.com/LesF4/js8-hrd-bridge
+
+(English below)
+
+=====================================================================
+ FRANÇAIS — CONFIGURATION (une seule fois, 2 minutes)
+=====================================================================
+
+L'app récupère chaque QSO que tu loggues dans JS8Call et l'envoie
+automatiquement dans HRD Logbook. Il faut juste autoriser les deux
+logiciels à communiquer :
+
+1) JS8Call : menu File > Settings > onglet « Reporting »
+   - coche « Enable TCP Server API »
+   - laisse l'adresse 127.0.0.1 et le port 2242 (valeurs par défaut)
+   - laisse DÉCOCHÉ « Broadcast to N1MM » (sinon chaque QSO arriverait
+     deux fois dans HRD)
+   - OK
+
+2) HRD Logbook : menu Tools > Configure > QSO Forwarding
+   - dans la partie réception UDP, coche la réception des QSO envoyés
+     par d'autres programmes (la même case que pour WSJT-X)
+   - port 2333
+   - choisis ton logbook comme base de destination
+   - OK
+
+3) Lance « JS8Call → HRD Logbook » : les deux voyants en haut de la
+   fenêtre doivent passer au VERT quand JS8Call et HRD sont ouverts.
+
+C'est tout : loggue tes QSO dans JS8Call comme d'habitude, ils arrivent
+seuls dans HRD. Si HRD est fermé, le QSO attend (⏳) et part dès que
+HRD est ouvert. Chaque QSO est aussi sauvegardé dans :
+   %APPDATA%\JS8toHRD\js8call_qsos_backup.adi
+
+EN CAS DE SOUCI
+- Voyant JS8Call rouge : JS8Call est-il lancé ? « Enable TCP Server API »
+  est-il coché ? JS8Call n'accepte qu'UN seul programme connecté à son
+  API : ferme les autres outils qui l'utiliseraient.
+- Voyant HRD rouge : HRD Logbook est-il ouvert ? La réception UDP sur
+  le port 2333 est-elle cochée ?
+- QSO en double dans HRD : décoche « Broadcast to N1MM » dans JS8Call.
+- Au premier lancement, Windows peut afficher « Windows a protégé votre
+  ordinateur » (app non signée) : « Informations complémentaires »
+  puis « Exécuter quand même ».
+
+Aide, questions, idées : https://github.com/LesF4/js8-hrd-bridge/issues
+
+
+=====================================================================
+ ENGLISH — SETUP (one time, 2 minutes)
+=====================================================================
+
+The app picks up every QSO you log in JS8Call and automatically sends it
+to HRD Logbook. You just need to let both programs talk to each other:
+
+1) JS8Call: File > Settings > "Reporting" tab
+   - tick "Enable TCP Server API"
+   - keep address 127.0.0.1 and port 2242 (defaults)
+   - leave "Broadcast to N1MM" UNTICKED (otherwise each QSO would reach
+     HRD twice)
+   - OK
+
+2) HRD Logbook: Tools > Configure > QSO Forwarding
+   - in the UDP receive section, enable receiving QSOs from other
+     programs (the same box used for WSJT-X)
+   - port 2333
+   - pick your logbook as the target database
+   - OK
+
+3) Start "JS8Call → HRD Logbook": both lights at the top of the window
+   turn GREEN when JS8Call and HRD are running.
+
+That's it: log your QSOs in JS8Call as usual, they land in HRD by
+themselves. If HRD is closed, the QSO waits (⏳) and is sent as soon as
+HRD starts. Every QSO is also saved to:
+   %APPDATA%\JS8toHRD\js8call_qsos_backup.adi
+
+TROUBLESHOOTING
+- JS8Call light red: is JS8Call running? Is "Enable TCP Server API"
+  ticked? JS8Call accepts only ONE program on its API: close other
+  tools that use it.
+- HRD light red: is HRD Logbook open? Is UDP receive on port 2333 on?
+- Duplicate QSOs in HRD: untick "Broadcast to N1MM" in JS8Call.
+- On first start Windows may show "Windows protected your PC"
+  (unsigned app): "More info" then "Run anyway".
+
+Help, questions, ideas: https://github.com/LesF4/js8-hrd-bridge/issues
+
+73 de F4MAJ
